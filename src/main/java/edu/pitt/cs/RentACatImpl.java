@@ -19,6 +19,17 @@ public class RentACatImpl implements RentACat {
 
 	public boolean returnCat(int id) {
 		// TODO
+		// First check arraylist of cats for the id
+		// Then check to see if that cat has been rented out
+		for(Cat cat: cats) {
+			if(cat.getId() == id) { // WE HAVE TO SEE IF ITS RENTED, has to be rented out to be true
+				if(cat.getRented()) {
+					cat.returnCat();
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 
@@ -34,6 +45,18 @@ public class RentACatImpl implements RentACat {
 
 	public boolean rentCat(int id) {
 		// TODO
+		// First check arraylist of cats for the id
+		// Then check to see if that cat has been rented out
+		for(Cat cat: cats) {
+			if(cat.getId() == id) { // WE HAVE TO SEE IF ITS RENTED, has to be unrented out to be true
+				if(!cat.getRented()) {
+					cat.rentCat();
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -49,7 +72,12 @@ public class RentACatImpl implements RentACat {
 
 	public String listCats() {
 		// TODO
-		return "WRITE CODE FOR THIS";
+		String line= "";
+		//gets all cats and adds them to the return value
+		for(Cat cat:cats){
+			line+=cat.toString();
+		}
+		return line;
 	}
 
 	/**
@@ -62,7 +90,12 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public boolean catExists(int id) {
-		// TODO
+		//loop through each cat
+		for (Cat cat:cats){
+			//if the current cat has the input id, return true
+			if (cat.getId()==id)
+				return true;
+		}
 		return false;
 	}
 
