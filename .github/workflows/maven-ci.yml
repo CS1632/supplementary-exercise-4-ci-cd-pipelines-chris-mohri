@@ -76,12 +76,12 @@ jobs:
   build:
     needs: [maven_test]  # Enforces that maven_test runs first
 
-    name: Build and analyze
+    #name: Build and analyze
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
-      
+
     steps:
       - name: Restore cached build
         uses: actions/cache@v3
